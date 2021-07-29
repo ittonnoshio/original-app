@@ -15,7 +15,7 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| name            | string     | null: false                    |
+| title           | string     | null: false                    |
 | category_id     | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
