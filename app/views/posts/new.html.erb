@@ -2,9 +2,9 @@
 
 <div>
   <h2>投稿内容を入力</h2>
-  <%# form_with local: true do |f| %>
+  <%= form_with model: @post, local: true do |f| %>
 
-  <%# render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
 
   <%# 投稿画像 %>
   <div>
@@ -16,7 +16,7 @@
       <p>
         クリックしてファイルをアップロード
       </p>
-      <%# f.file_field :image, id:"item-image" %>
+      <%= f.file_field :image, id:"item-image" %>
     </div>
   </div>
   <%# /投稿画像 %>
@@ -27,7 +27,7 @@
       タイトル名
       <span>必須</span>
     </div>
-    <%# f.text_area :title, class:, id:, placeholder:"タイトル名（必須 20文字まで)", maxlength:"20" %>
+    <%= f.text_area :title %>
   </div>
   <%# /タイトル %>
 
@@ -37,17 +37,17 @@
       カテゴリー
       <span>必須</span>
     </div>
-    <%# f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
   </div>
   <%# /カテゴリー %>
 
   <%# 下部ボタン %>
   <div class="sell-btn-contents">
-    <%# f.submit "投稿する", class:"sell-btn" %>
+    <%= f.submit "投稿する", class:"sell-btn" %>
     <%= link_to 'もどる', root_path, class:"back-btn" %>
   </div>
   <%# /下部ボタン %>
-  <%# end %>
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>
