@@ -2,14 +2,14 @@
 
 <div>
   <div>
-    <h3><%= 'タイトル' %></h3>
+    <h3><%= @post.title %></h3>
   </div>
   <div>
-    <h3><%= link_to 'ユーザー名', "#" %></h3>
+    <h3><%= link_to @post.user.nickname, "#" %></h3>
   </div>
 
   <div>
-    <p><%= "スライド" %></p>
+    <p><%= image_tag @post.image.variant(resize: '500x500') %></p>
   </div>
 
   <div>
@@ -19,7 +19,7 @@
   </div>
 
   <div class="links">
-    <a href="#"><%= 'カテゴリー' %>をもっと見る</a>
+    <a href="#"><%= @post.category.name %>をもっと見る</a>
   </div>
 </div>
 
