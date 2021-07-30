@@ -25,35 +25,25 @@
     <h1>投稿一覧</h1>
   </div>
 
-  <div>
     <ul>
-      <div>
-      <h3><%= 'タイトル' %></h3>
-      </div>
-      <li><%= link_to 'スライド1', "#" %></li>
-      <div>
-      <h3><%= '日付' %></h3>
-      </div>
-
-      <div>
-      <h3><%= 'タイトル' %></h3>
-      </div>
-      <li><%= link_to 'スライド2', "#" %></li>
-      <div>
-      <h3><%= '日付' %></h3>
-      </div>
-
-      <div>
-      <h3><%= 'タイトル' %></h3>
-      </div>
-      <li><%= link_to 'スライド3', "#" %></li>
-      <div>
-      <h3><%= '日付' %></h3>
-      </div>
+      <% @posts.each do |post| %>
+        <li>
+          <div>
+            <h3><%= post.title %></h3>
+          </div>
+          <div>
+              <div>
+                <%= image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
+              </div>
+          </div>
+          <div>
+            <h3><%= post.created_at %></h3>
+          </div>
+          <%# end %>
+        </li>
+      <% end %>
     </ul>
-  </div>
 
-  </ul>
 </div>
 
 <%= render "shared/footer" %>
