@@ -1,0 +1,53 @@
+<%= render "shared/header" %>
+
+<div>
+  <h2>投稿内容を入力</h2>
+  <%# form_with local: true do |f| %>
+
+  <%# render 'shared/error_messages', model: f.object %>
+
+  <%# 投稿画像 %>
+  <div>
+    <div>
+      画像
+      <span>必須</span>
+    </div>
+    <div>
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%# f.file_field :image, id:"item-image" %>
+    </div>
+  </div>
+  <%# /投稿画像 %>
+
+  <%# タイトル %>
+  <div>
+    <div>
+      タイトル名
+      <span>必須</span>
+    </div>
+    <%# f.text_area :title, class:, id:, placeholder:"タイトル名（必須 20文字まで)", maxlength:"20" %>
+  </div>
+  <%# /タイトル %>
+
+  <%# カテゴリー %>
+  <div>
+    <div>
+      カテゴリー
+      <span>必須</span>
+    </div>
+    <%# f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
+  </div>
+  <%# /カテゴリー %>
+
+  <%# 下部ボタン %>
+  <div class="sell-btn-contents">
+    <%# f.submit "投稿する", class:"sell-btn" %>
+    <%= link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
+  <%# /下部ボタン %>
+  <%# end %>
+</div>
+
+<%= render "shared/footer" %>
