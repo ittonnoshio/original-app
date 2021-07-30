@@ -3,7 +3,7 @@ class Post < ApplicationRecord
     validates :image
     validates :title
   end
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank" } 
+  validates :category_id, numericality: { other_than: 1 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
