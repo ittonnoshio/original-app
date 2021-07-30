@@ -1,1 +1,60 @@
-<h1>トップページ</h1>
+<%= render "shared/header" %>
+
+<div>
+  <form class="search-form" action="#">
+    <input class='input-box' placeholder='投稿を検索する'>
+    <button class="search-button">
+      <%= image_tag "search.png", class:"search-icon" %>
+    </button>
+  </form>
+
+  <div>ジャンル選択</div>
+    <ul>
+      <li><%= link_to '教育', "#" %></li>
+      <li><%= link_to '美容', "#" %></li>
+      <li><%= link_to 'ファッション', "#" %></li>
+      <li><%= link_to 'デザイン', "#" %></li>
+      <li><%= link_to '本', "#" %></li>
+      <li><%= link_to 'お金', "#" %></li>
+      <li><%= link_to '食べ物', "#" %></li>
+      <li><%= link_to 'ビジネス', "#" %></li>
+      <li><%= link_to 'その他', "#" %></li>
+    </ul>
+
+  <div>
+    <h1>投稿一覧</h1>
+  </div>
+
+  <div>
+    <ul>
+      <div>
+      <h3><%= 'タイトル' %></h3>
+      </div>
+      <li><%= link_to 'スライド1', "#" %></li>
+      <div>
+      <h3><%= '日付' %></h3>
+      </div>
+
+      <div>
+      <h3><%= 'タイトル' %></h3>
+      </div>
+      <li><%= link_to 'スライド2', "#" %></li>
+      <div>
+      <h3><%= '日付' %></h3>
+      </div>
+
+      <div>
+      <h3><%= 'タイトル' %></h3>
+      </div>
+      <li><%= link_to 'スライド3', "#" %></li>
+      <div>
+      <h3><%= '日付' %></h3>
+      </div>
+    </ul>
+  </div>
+
+  </ul>
+</div>
+
+<%= render "shared/footer" %>
+
