@@ -5,9 +5,8 @@
     <h3><%= @post.title %></h3>
   </div>
   <div>
-    <h3><%= link_to @post.user.nickname, "#" %></h3>
+    <h3><%= link_to @post.user.nickname, user_path(@post.user.id) %></h3>
   </div>
-
   <div>
     <p><%= image_tag @post.image.variant(resize: '500x500') %></p>
   </div>

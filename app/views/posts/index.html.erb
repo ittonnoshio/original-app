@@ -25,25 +25,21 @@
     <h1>投稿一覧</h1>
   </div>
 
-    <ul>
-      <% @posts.each do |post| %>
-        <li>
+    <% @posts.each do |post| %>
+      <div>
+        <h3><%= post.title %></h3>
+      </div>
+      <div>
+        <%= link_to post_path(post.id), method: :get do %>
           <div>
-            <h3><%= post.title %></h3>
+            <%= image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
           </div>
-          <div>
-            <%= link_to post_path(post.id), method: :get do %>
-              <div>
-                <%= image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
-              </div>
-            <% end %>
-          </div>
-          <div>
-            <h3><%= post.created_at %></h3>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+        <% end %>
+      </div>
+      <div>
+        <h3><%= post.created_at %></h3>
+      </div>
+    <% end %>
 
 </div>
 
