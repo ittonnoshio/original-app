@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   def self.search(search)
-    if search != ""
+    if search != ''
       Post.where('title LIKE(?)', "%#{search}%")
     else
       Post.all
