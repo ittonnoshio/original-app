@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :set_post
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
     if @post.user_id != current_user.id
