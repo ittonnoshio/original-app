@@ -17,6 +17,10 @@
     </div>
   </div>
 
+  <div class='star-btn' id="like_<%= @post.id %>">
+    <%= render "favorites/favorite", post: @post %>
+  </div>
+
   <div class="links">
     <a href="#"><%= @post.category.name %>をもっと見る</a>
   </div>

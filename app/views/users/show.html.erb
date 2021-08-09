@@ -23,6 +23,19 @@
       <h3><%= post.created_at %></h3>
     </div>
   <% end %>
+
+  <div>
+    <h3>お気に入り</h3>
+  </div>
+
+  <% if @favorite_list.present? %>
+    <% @favorite_list.each do |post| %>
+      <h3><%= post.title %></h3>
+      <%# link_to post_path(post.id), method: :get do %>
+        <%# image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
+      <h3><%= post.created_at %></h3>
+    <% end %>
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>

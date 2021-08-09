@@ -21,3 +21,14 @@
 
 ### Association
 - belongs_to :user
+
+## favoritesテーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| user            | references | null: false, foreign_key: true |
+| post            | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :post

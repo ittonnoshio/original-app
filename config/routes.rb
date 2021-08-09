@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    get :favorites, on: :collection
+  end
 end
