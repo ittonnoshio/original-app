@@ -1,11 +1,13 @@
-<% if !Favorite.exists?(user: current_user, post_id: @post.id) %>
-  <%= link_to post_favorites_path(@post), method: :post, remote: true, class: "favorite-btn" do %>
-    <span> 登録 </span>
+<div class='star-btn' id="like_<%= @post.id %>">
+  <% if !Favorite.exists?(user: current_user, post_id: @post.id) %>
+    <%= link_to post_favorites_path(@post), method: :post, remote: true, class: "favorite-btn" do %>
+      <span> 登録 </span>
+    <% end %>
+      <%= @post.favorites.length %>
+  <% else %>
+    <%= link_to post_favorites_path(@post), method: :delete, remote: true, class: "favorite-btn" do %>
+      <span> 登録 </span>
+    <% end %>
+      <%= @post.favorites.length %>
   <% end %>
-    <%= @post.favorites.length %>
-<% else %>
-  <%= link_to post_favorites_path(@post), method: :delete, remote: true, class: "favorite-btn" do %>
-    <span> 登録 </span>
-  <% end %>
-    <%= @post.favorites.length %>
-<% end %>
+</div>
