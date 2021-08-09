@@ -3,9 +3,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
-    if @post.user_id != current_user.id
-      @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
-    end
+    @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id) if @post.user_id != current_user.id
   end
 
   def destroy
