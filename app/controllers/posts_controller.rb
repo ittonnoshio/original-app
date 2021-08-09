@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def search_category
-    # @results = @p.result.includes(:category) 
+    # @results = @p.result.includes(:category)
     @results = @p.result
   end
 
@@ -39,6 +39,6 @@ class PostsController < ApplicationController
   end
 
   def search_post
-    @p = Post.ransack(params[:q]) 
+    @p = Post.ransack(params[:q])
   end
 end
