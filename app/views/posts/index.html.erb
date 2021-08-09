@@ -6,18 +6,27 @@
     <%= form.submit "検索", class: "search-btn" %>
   <% end %>
 
-  <div>ジャンル選択</div>
-    <ul>
-      <li><%= link_to '教育', "#" %></li>
-      <li><%= link_to '美容', "#" %></li>
-      <li><%= link_to 'ファッション', "#" %></li>
-      <li><%= link_to 'デザイン', "#" %></li>
-      <li><%= link_to '本', "#" %></li>
-      <li><%= link_to 'お金', "#" %></li>
-      <li><%= link_to '食べ物', "#" %></li>
-      <li><%= link_to 'ビジネス', "#" %></li>
-      <li><%= link_to 'その他', "#" %></li>
-    </ul>
+  <h1>
+    ジャンル選択
+  </h1>
+  <%= search_form_for @p, url: posts_searchcategory_path do |f| %>
+    <%= f.label :category_name_eq, 'カテゴリー：' %>
+    <%# f.collection_select :category_name_eq, @category_name, :name, :name, include_blank: '指定なし' %>
+    <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
+    <%= f.submit '検索' %>
+  <% end %>
+
+      <ul>
+        <li><%= link_to '教育', "#" %></li>
+        <li><%= link_to '美容', "#" %></li>
+        <li><%= link_to 'ファッション', "#" %></li>
+        <li><%= link_to 'デザイン', "#" %></li>
+        <li><%= link_to '本', "#" %></li>
+        <li><%= link_to 'お金', "#" %></li>
+        <li><%= link_to '食べ物', "#" %></li>
+        <li><%= link_to 'ビジネス', "#" %></li>
+        <li><%= link_to 'その他', "#" %></li>
+      </ul>
 
   <div>
     <h1>投稿一覧</h1>
