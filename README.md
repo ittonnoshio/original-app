@@ -1,52 +1,51 @@
-# テーブル設計
+# アプリケーション名
+PAPPA(パッパ)
 
-## usersテーブル
+# アプリケーション概要
+時間をかけずに、広く深く情報収集できる
 
-| Column             | Type    | Options                   |
-| ------------------ | ------- | ------------------------- |
-| nickname           | string  | null: false               |
-| email              | string  | null: false, unique: true |
-| encrypted_password | string  | null: false               |
+# URL
+非公開
 
-### Association
-- has_many :posts
-- has_many :favorites
-- has_many :relationships
-- has_many :followings, through: :relationships, source: :follow
-- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-- has_many :followers, through: :reverse_of_relationships, source: :user
+# テスト用アカウント
+非公開
 
-## postsテーブル
+# 利用方法
+- スライド（図解など）を投稿して、アウトプットや発信をする
+- 後で確認したい、保存しておきたい投稿をお気に入り登録で保存し、マイページで確認できる
+- 好みの投稿をするユーザーをフォローでき、マイページから確認できる
+- 目的の投稿を早く取得する為に、投稿を検索できる
+- 投稿やユーザー詳細ページは誰でも閲覧できるが、お気に入り登録、フォローはログインしないとできない
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| title           | string     | null: false                    |
-| category_id     | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+# 目指した課題解決
+- 時間かけずに広く深く情報収集できる
+- 図解、スライド、デザインのアウトプットができる
 
-### Association
-- belongs_to :user
-- has_many :favorites
+# 洗い出した要件
+- 新規登録、ログイン、ログアウト
+- 新規投稿
+- 投稿を一覧で閲覧
+- 投稿の詳細を閲覧
+- マイページ閲覧
+- 投稿検索
+- 投稿のお気に入り登録
+- ユーザーフォロー
 
-## favoritesテーブル
+# 実装した機能についての画像やGIFおよびその説明
+非公開
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| user            | references | null: false, foreign_key: true |
-| post            | references | null: false, foreign_key: true |
+# 実装予定の機能
+- 画像の複数投稿
+- 複数枚ある投稿をインスタみたいにスライドして各ページ確認できるようにする
+- 投稿のページ数、今読んでいるページ番号を表示
+- スクロールなし機能
+- 追い投稿できる
+- 追い投稿にいいねできる
+- お気に入り数、フォロー数の表示（投稿者、ユーザー自身にのみ公開）
+- ダークモード対応にする
 
-### Association
-- belongs_to :user
-- belongs_to :post
+# データベース設計
+https://gyazo.com/85d982af0e62b21e9ae2dfdacf1ad609
 
-## relationshipsテーブル
-
-| Column          | Type    | Options                           |
-| --------------- | ------- | --------------------------------- |
-| user_id         | integer | foreign_key: true                 |
-| follow_id       | integer | foreign_key: { to_table: :users } |
-
-### Association
-
-- belongs_to :user
-- belongs_to :follow, class_name: 'User'
+# ローカルでの動作方法
+非公開
