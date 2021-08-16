@@ -1,28 +1,43 @@
 <%= render "shared/header" %>
 
-<div>
-  <div>
-    <h3><%= @post.title %></h3>
-  </div>
-  <div>
-    <h3><%= link_to @post.user.nickname, user_path(@post.user.id) %></h3>
-  </div>
-  <div>
-    <p><%= image_tag @post.image.variant(resize: '500x500') %></p>
-  </div>
-
-  <div>
-    <div>
-      <span>1 2 3 4 5</span>
-    </div>
-  </div>
-
-  <%= render "favorites/favorite", post: @post %>
-
-  <%= render "relationships/follow", user: @user %>
-
+<div class='contents'>
   <div class="links">
-    <a href="#"><%= @post.category.name %>をもっと見る</a>
+    <a href="#"><%= @post.category.name %></a>
+  </div>
+
+  <div class='post-lists'>
+  
+      <ul class='lists-left'>
+        <li class='list-left'>
+          <div class='post-title'>
+            <h3><%= @post.title %></h3>
+          </div>
+
+          <div class='post-img-content'>
+            <p><%= image_tag @post.image.variant(resize: '500x500'), class: "post-img" %></p>
+          </div>
+
+          <div>
+            <div>
+              <span>1 2 3 4 5</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+      <ul class='lists-right'>
+        <li class='list-right'>
+          <div  class='user-nickname'>
+            <%= link_to @post.user.nickname, user_path(@post.user.id) %>
+          </div>
+
+          <%= render "favorites/favorite", post: @post %>
+
+          <%= render "relationships/follow", user: @user %>
+        </li>
+      </ul>
+
   </div>
 </div>
 

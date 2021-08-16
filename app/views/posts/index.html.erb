@@ -1,52 +1,63 @@
 <%= render "shared/header" %>
 
-<div>
-  <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-  <% end %>
-
-  <h1>
-    ジャンル選択
-  </h1>
-  <%= search_form_for @p, url: posts_searchcategory_path do |f| %>
-    <%= f.label :category_name_eq, 'カテゴリー：' %>
-    <%# f.collection_select :category_name_eq, @category_name, :name, :name, include_blank: '指定なし' %>
-    <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
-    <%= f.submit '検索' %>
-  <% end %>
-
-      <ul>
-        <li><%= link_to '教育', "#" %></li>
-        <li><%= link_to '美容', "#" %></li>
-        <li><%= link_to 'ファッション', "#" %></li>
-        <li><%= link_to 'デザイン', "#" %></li>
-        <li><%= link_to '本', "#" %></li>
-        <li><%= link_to 'お金', "#" %></li>
-        <li><%= link_to '食べ物', "#" %></li>
-        <li><%= link_to 'ビジネス', "#" %></li>
-        <li><%= link_to 'その他', "#" %></li>
-      </ul>
-
-  <div>
-    <h1>投稿一覧</h1>
-  </div>
-
-    <% @posts.each do |post| %>
-      <div>
-        <h3><%= post.title %></h3>
-      </div>
-      <div>
-        <%= link_to post_path(post.id), method: :get do %>
-          <div>
-            <%= image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
-          </div>
-        <% end %>
-      </div>
-      <div>
-        <h3><%= post.created_at %></h3>
-      </div>
+<div class='contents'>
+  <div class='contents-left'>
+    <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
     <% end %>
+
+    <%= search_form_for @p, url: posts_searchcategory_path do |f| %>
+      <%= f.label :category_name_eq, 'カテゴリー：' %>
+      <%# f.collection_select :category_name_eq, @category_name, :name, :name, include_blank: '指定なし' %>
+      <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
+      <%= f.submit '検索' %>
+    <% end %>
+
+      <div class='lists-left'>
+        <ul class='category-lists'>
+          <li><%= link_to '01 |  教育', "#" %></li>
+          <li><%= link_to '02 |  美容', "#" %></li>
+          <li><%= link_to '03 |  ファッション', "#" %></li>
+          <li><%= link_to '04 |  デザイン', "#" %></li>
+          <li><%= link_to '05 |  本', "#" %></li>
+          <li><%= link_to '06 |  お金', "#" %></li>
+          <li><%= link_to '07 |  食べ物', "#" %></li>
+          <li><%= link_to '08 |  ビジネス', "#" %></li>
+          <li><%= link_to '09 |  その他', "#" %></li>
+        </ul>
+      </div>
+    </div>
+
+  <div class='contents-right'>
+    <div class='posts'>
+      <div class="subtitle">
+        <h2>投稿一覧</h2>
+      </div>
+
+    <ul class='post-lists'>
+      <% @posts.each do |post| %>
+        <li class='list'>
+
+          <div class='post-title'>
+            <%= post.title %>
+          </div>
+          <div>
+            <%= link_to post_path(post.id), method: :get do %>
+              <div class='post-img-content'>
+                <%= image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
+              </div>
+            <% end %>
+          </div>
+          <div class='post-date'>
+            <%= post.created_at %>
+          </div>
+
+        </li>
+      <% end %>
+    </ul>
+    </div>
+  </div>
 
 </div>
 
