@@ -32,9 +32,18 @@
             <%= link_to @post.user.nickname, user_path(@post.user.id) %>
           </div>
 
-          <%= render "favorites/favorite", post: @post %>
+        <% if user_signed_in? %>
+          <% if current_user.id == @post.user_id %>
+            <%= link_to "編集", edit_post_path(@post.id), method: :get, class: "post-red-btn" %>
+            <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy" %>
 
-          <%= render "relationships/follow", user: @user %>
+          <%# else %>
+            <%# render "favorites/favorite", post: @post %>
+            <%# render "relationships/follow", user: @user %>
+            <%# render "relationships/follow", user: @post.user.id%>
+          <% end %>
+        <% end %>
+
         </li>
       </ul>
 
