@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <div>
-  <h2>投稿内容を入力</h2>
+  <h2>編集内容を入力</h2>
   <%= form_with model: @post, local: true do |f| %>
 
   <%= render 'shared/error_messages', model: f.object %>
@@ -44,8 +44,8 @@
 
   <%# 下部ボタン %>
   <div class="sell-btn-contents">
-    <%= f.submit "投稿する", class:"sell-btn" %>
-    <%= link_to 'もどる', root_path, class:"back-btn" %>
+    <%= f.submit "編集する", class:"sell-btn" %>
+    <%= link_to 'もどる', post_path(@post.id), class:"back-btn" %>
   </div>
   <%# /下部ボタン %>
 
