@@ -14,7 +14,9 @@
           </div>
 
           <div class='post-img-content'>
-            <p><%= image_tag @post.image.variant(resize: '500x500'), class: "post-img" %></p>
+            <% @post.images.each do |image| %>
+              <%= image_tag image.variant(resize: '500x500'), class: "images" %>
+            <% end %>
           </div>
 
           <div>

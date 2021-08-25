@@ -13,7 +13,7 @@
       <span>必須</span>
     </div>
     <%# <div> %>
-      <%= f.file_field :image, id:"post-image" %>
+      <%= f.file_field :images, name: 'post[images][]', id: 'post-image' %>
     <%# </div> %>
 
     <%# 画像をプレビュー表示する場所 %>
@@ -21,6 +21,10 @@
     <%# /画像をプレビュー表示する場所 %>
   </div>
   <%# /投稿画像 %>
+
+  <% @post.images.each do |image| %>
+    <%= image_tag image, class: 'images' %>
+  <% end %>
 
   <%# タイトル %>
   <div>
