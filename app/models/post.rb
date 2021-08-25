@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   with_options presence: true do
-    validates :image
+    validates :images
     validates :title
   end
   validates :category_id, numericality: { other_than: 1 }
@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   belongs_to :category
 
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   # has_many :favorites, dependent: :destroy
 
   def self.search(search)
