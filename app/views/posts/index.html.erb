@@ -42,15 +42,13 @@
           <div class='post-title'>
             <%= post.title %>
           </div>
-          <div>
+
             <%= link_to post_path(post.id), method: :get do %>
               <div class='post-img-content'>
-                <% post.images.each do |image| %>
-                  <%= image_tag image.variant(resize: '500x500'), class: "images" %>
-                <% end %>
+                <%= image_tag post.images[0], class: "images" %>
               </div>
             <% end %>
-          </div>
+
           <div class='post-date'>
             <%= post.created_at %>
           </div>

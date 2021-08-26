@@ -14,16 +14,14 @@
           </div>
 
           <div class='post-img-content'>
-            <% @post.images.each do |image| %>
-              <%= image_tag image.variant(resize: '500x500'), class: "images" %>
-            <% end %>
-          </div>
-
-          <div>
-            <div>
-              <span>1 2 3 4 5</span>
+            <div class="slider">
+              <% @post.images.each do |image| %>
+                <%= image_tag image, class: "slider-img" %>
+                <%# image_tag image.variant(resize: '500x500'), class: "slider-img" %>
+              <% end %>
             </div>
           </div>
+
         </li>
       </ul>
 

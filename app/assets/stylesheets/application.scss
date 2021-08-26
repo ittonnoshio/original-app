@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+@import "slick-theme";
+@import "slick";
+
+.slider {
+  height: 500px;
+  width: 500px;
+}
+
+.slider-img {
+  margin: 50px auto;
+  height: auto;
+  width: 60%;
+}
+
+.slick-next {
+  right: 10px !important;
+  z-index: 100;
+}
+
+.slick-prev {
+  left: 10px !important;
+  z-index: 100;
+}
