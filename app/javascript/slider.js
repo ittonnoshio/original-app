@@ -1,3 +1,5 @@
 $(function () {
-  console.log("OK");
+  $(".slider").slick({
+    dots: true,
+  });
 });
