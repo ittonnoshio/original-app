@@ -7,27 +7,12 @@
       <%= form.submit "検索", class: "search-btn" %>
     <% end %>
 
-    <%= search_form_for @p, url: posts_searchcategory_path do |f| %>
-      <%= f.label :category_name_eq, 'カテゴリー：' %>
-      <%# f.collection_select :category_name_eq, @category_name, :name, :name, include_blank: '指定なし' %>
-      <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
-      <%= f.submit '検索' %>
+    <% @categories.each do |category| %>
+      <% if category.name != '--' %>
+        <li><%= link_to "#{category.name}", category_path(category.id) %></li>
+      <% end %>
     <% end %>
-
-      <div class='lists-left'>
-        <ul class='category-lists'>
-          <li><%= link_to '01 |  教育', "#" %></li>
-          <li><%= link_to '02 |  美容', "#" %></li>
-          <li><%= link_to '03 |  ファッション', "#" %></li>
-          <li><%= link_to '04 |  デザイン', "#" %></li>
-          <li><%= link_to '05 |  本', "#" %></li>
-          <li><%= link_to '06 |  お金', "#" %></li>
-          <li><%= link_to '07 |  食べ物', "#" %></li>
-          <li><%= link_to '08 |  ビジネス', "#" %></li>
-          <li><%= link_to '09 |  その他', "#" %></li>
-        </ul>
-      </div>
-    </div>
+  </div>
 
   <div class='contents-right'>
     <div class='posts'>
