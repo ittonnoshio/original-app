@@ -1,19 +1,25 @@
 class FavoritesController < ApplicationController
-  # before_action :set_post
-  # before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :set_post
+  before_action :authenticate_user!, only: [:create, :destroy]
 
-  # def create
-  #   @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id) if @post.user_id != current_user.id
-  # end
+  def create
+    # @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id) if @post.user_id != current_user.id
+    if @post.user_id != current_user.id
+      favorite = current_user.favorites.build(post_id: params[:post_id])
+      favorite.save
+    end
+  end
 
-  # def destroy
-  #   @favorite = Favorite.find_by(user_id: current_user.id, post_id: @post.id)
-  #   @favorite.destroy
-  # end
+  def destroy
+    # @favorite = Favorite.find_by(user_id: current_user.id, post_id: @post.id)
+    # @favorite.destroy
+    favorite = Favorite.find_by(post_id: params[:post_id], user_id: current_user.id)
+    favorite.destroy
+  end
 
-  # private
+  private
 
-  # def set_post
-  #   @post = Post.find(params[:post_id])
-  # end
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end

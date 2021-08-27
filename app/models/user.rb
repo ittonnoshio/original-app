@@ -7,7 +7,8 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'is invalid. Input half-width characters.' }
 
   has_many :posts, dependent: :destroy
-  # has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   # has_many :relationships, dependent: :destroy
   # has_many :followings, through: :relationships, source: :follow

@@ -8,34 +8,39 @@
     <h3>投稿したもの</h3>
   </div>
 
-  <% @posts.each do |post| %>
-    <div>
-      <h3><%= post.title %></h3>
-    </div>
-    <div>
-      <%= link_to post_path(post.id), method: :get do %>
-        <div>
-          <%= image_tag post.images[0].variant(resize: '500x500'), class: "images" %>
-        </div>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <p>
+          <%= post.title %>
+        </P>
+          <%= link_to post_path(post.id), method: :get do %>
+            <%= image_tag post.images[0].variant(resize: '500x500'), class: "images" %>
+          <% end %>
+          <%= post.created_at %>
+      </li>
+    <% end %>
+  </ul>
+
+  <p>
+  <h3>お気に入り</h3>
+  </p>
+
+  <% if @favorite_posts.present? %>
+    <ul>
+      <% @favorite_posts.each do |post| %>
+        <li>
+          <p>
+            <%= post.title %>
+          </P>
+            <%= link_to post_path(post.id), method: :get do %>
+              <%= image_tag post.images[0].variant(resize: '500x500'), class: "images" %>
+            <% end %>
+            <%= post.created_at %>
+        </li>
       <% end %>
-    </div>
-    <div>
-      <h3><%= post.created_at %></h3>
-    </div>
+    </ul>
   <% end %>
-
-  <%# <div>
-    <h3>お気に入り</h3>
-  </div> %>
-
-  <%# if @favorite_list.present? %>
-    <%# @favorite_list.each do |post| %>
-      <%# <h3><%= post.title %></h3> %>
-      <%# link_to post_path(post.id), method: :get do %>
-        <%# image_tag post.image.variant(resize: '500x500'), class: "post-img" if post.image.attached? %>
-      <%# <h3><%= post.created_at %></h3> %>
-    <%# end %>
-  <%# end %>
 </div>
 
 <%= render "shared/footer" %>
