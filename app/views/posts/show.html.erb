@@ -41,8 +41,7 @@
             <div class='favarites' id="favorite_<%= @post.id %>">
               <%= render "favorites/favorite", post: @post %>
             </div>
-            <%# render "relationships/follow", user: @user %>
-            <%# render "relationships/follow", user: @post.user.id%>
+            <%= render "relationships/follow", user: @user %>
           <% end %>
         <% end %>
 
