@@ -23,9 +23,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:post_id])
-    # @user = User.find(params[:id])
-    # @user = User.find(params[:follow_id])
+    @user = @post.user
   end
 
   def edit

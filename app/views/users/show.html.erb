@@ -4,6 +4,7 @@
   <div>
     <h3><%= "#{@user.nickname}さん" %></h3>
   </div>
+    <p><%= render "relationships/follow", user: @user %></p>
   <div>
     <h3>投稿したもの</h3>
   </div>
