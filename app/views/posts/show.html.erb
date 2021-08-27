@@ -37,8 +37,10 @@
             <%= link_to "編集", edit_post_path(@post.id), method: :get, class: "post-red-btn" %>
             <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy" %>
 
-          <%# else %>
-            <%# render "favorites/favorite", post: @post %>
+          <% else %>
+            <div class='favarites' id="favorite_<%= @post.id %>">
+              <%= render "favorites/favorite", post: @post %>
+            </div>
             <%# render "relationships/follow", user: @user %>
             <%# render "relationships/follow", user: @post.user.id%>
           <% end %>
