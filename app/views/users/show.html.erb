@@ -38,6 +38,9 @@
               <%= image_tag post.images[0].variant(resize: '500x500'), class: "images" %>
             <% end %>
             <%= post.created_at %>
+            <% if user_signed_in? && current_user != post.user %>
+              <%= render "favorites/favorite", post: post %>
+            <% end %>
         </li>
       <% end %>
     </ul>
