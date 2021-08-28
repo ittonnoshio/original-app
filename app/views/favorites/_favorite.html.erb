@@ -1,15 +1,17 @@
-<% if @post.already_favorited?(current_user) %>
-  <p class="favorite-heading">
-    <%= link_to post_favorites_path(@post), method: :delete, remote: true, class: "favorite-btn" do %>
-      <span> 登録をやめる </span>
-      <%# icon("fas", "star", class: "favorite-icon") %>
-    <% end %>
-  </p>
-<% else %>
-  <p class="favorite-heading">
-    <%= link_to post_favorites_path(@post), method: :post, remote: true, class: "favorite-btn" do %>
-      <span> 登録する </span>
-      <%# icon("far", "star", class: "favorite-icon") %>
-    <% end %>
-  </p>
-<% end %>
+<div class='favarites' id="favorite_<%= post.id %>">
+  <% if post.already_favorited?(current_user) %>
+    <p class="favorite-heading">
+      <%= link_to post_favorites_path(post), method: :delete, class: "favorite-btn", remote: true do %>
+        <span> 登録をやめる </span>
+        <%# icon("fas", "star", class: "favorite-icon") %>
+      <% end %>
+    </p>
+  <% else %>
+    <p class="favorite-heading">
+      <%= link_to post_favorites_path(post), method: :post, class: "favorite-btn", remote: true do %>
+        <span> 登録する </span>
+        <%# icon("far", "star", class: "favorite-icon") %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
