@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     end
     resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+     get :following
+    end
+  end
   resources :categories, only: :show
   resources :relationships, only: [:create, :destroy]
 end

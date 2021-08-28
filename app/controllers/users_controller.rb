@@ -3,10 +3,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     @favorite_posts = @user.favorite_posts
-    @follow_users = @user.favorite_posts
+  end
 
-    # favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:post_id)
-    # favorites = Favorite.where(user_id: current_user).order(created_at: :desc).pluck(:post_id)
-    # @favorite_list = Post.find(favorites)
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'show'
   end
 end
